@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({
   baseURL: import.meta.env.PROD
-    ? 'https://smart-menu-api-ggtm.onrender.com/api'
+    ? 'https://samipanda-github-io.onrender.com/api'
     : '/api',
 });
 
