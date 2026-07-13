@@ -1,0 +1,11 @@
+{
+    "name": "samipanda-github-io-root",
+    "version": "1.0.0",
+    "description": "Root configuration for Render auto-deployment",
+    "scripts": {
+        "start": "cd smart-menu/backend && npm install && node server.js"
+    },
+    "engines": {
+        "node": "18.x"
+    }
+}
