@@ -24,14 +24,14 @@ export default function AdminSidebar({ collapsed, setCollapsed }) {
         {!collapsed && (
           <Link to="/admin" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full border border-amber-500/30 overflow-hidden bg-black flex items-center justify-center">
-              <img src="/logo-icon.png" alt="Logo" className="w-full h-full object-cover scale-110" />
+              <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Logo" className="w-full h-full object-cover scale-110" />
             </div>
             <span className="font-bold"><span className="text-amber-500">Smart</span>Menu</span>
           </Link>
         )}
         {collapsed && (
           <div className="w-8 h-8 rounded-full border border-amber-500/30 overflow-hidden bg-black flex items-center justify-center mx-auto">
-            <img src="/logo-icon.png" alt="Logo" className="w-full h-full object-cover scale-110" />
+            <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Logo" className="w-full h-full object-cover scale-110" />
           </div>
         )}
         <button

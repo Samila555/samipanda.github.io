@@ -41,7 +41,7 @@ export default function Login() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8 fade-in">
           <div className="w-20 h-20 bg-black/60 border border-amber-500/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-            <img src="/logo-icon.png" alt="Logo" className="w-full h-full object-cover scale-110" />
+            <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Logo" className="w-full h-full object-cover scale-110" />
           </div>
           <h1 className="text-3xl font-bold text-white">Admin Login</h1>
           <p className="text-white/70 mt-2">Smart Menu Management System</p>

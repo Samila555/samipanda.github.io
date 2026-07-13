@@ -147,7 +147,7 @@ export default function Menu() {
         ) : meals.length === 0 ? (
           <div className="text-center py-20">
             <div className="w-20 h-20 rounded-full border border-amber-500/30 overflow-hidden bg-black flex items-center justify-center mx-auto mb-4">
-              <img src="/logo-icon.png" alt="Logo" className="w-full h-full object-cover scale-110 opacity-50 grayscale" />
+              <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Logo" className="w-full h-full object-cover scale-110 opacity-50 grayscale" />
             </div>
             <h3 className="text-2xl font-bold text-gray-400">No meals found</h3>
             <p className="text-gray-400">Try adjusting your search or filters</p>
@@ -161,7 +161,7 @@ export default function Menu() {
                     <img src={meal.image} alt={meal.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
                     <div className="bg-black/5 w-full h-full flex items-center justify-center overflow-hidden">
-                      <img src="/logo-icon.png" alt="Placeholder" className="w-24 h-24 object-cover scale-110 opacity-20 group-hover:opacity-40 group-hover:scale-125 transition-all duration-500 rounded-full" />
+                      <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Placeholder" className="w-24 h-24 object-cover scale-110 opacity-20 group-hover:opacity-40 group-hover:scale-125 transition-all duration-500 rounded-full" />
                     </div>
                   )}
                   {!meal.available && (

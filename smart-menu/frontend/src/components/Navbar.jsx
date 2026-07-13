@@ -28,7 +28,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 border border-amber-500/30 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform overflow-hidden bg-black">
-              <img src="/logo-icon.png" alt="Logo" className="w-full h-full object-cover scale-110" />
+              <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Logo" className="w-full h-full object-cover scale-110" />
             </div>
             <span className="text-xl font-bold text-gray-800 dark:text-white">
               <span className="text-amber-500">Smart</span>Menu

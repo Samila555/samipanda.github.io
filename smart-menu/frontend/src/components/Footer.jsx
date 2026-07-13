@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-full border border-amber-500/30 overflow-hidden bg-black flex items-center justify-center">
-                <img src="/logo-icon.png" alt="Logo" className="w-full h-full object-cover scale-110" />
+                <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <span className="text-xl font-bold"><span className="text-amber-500">Smart</span>Menu</span>
             </div>
@@ -27,9 +27,9 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-400">
-              <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> 123 Restaurant St, Food City</li>
-              <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> +1 234 567 8900</li>
-              <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> info@smartmenu.com</li>
+              <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> hotel st foot, smartmenu</li>
+              <li className="flex items-center gap-2"><Phone className="w-4 h-4" /> 0947263641</li>
+              <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> samuelmaru633@gmail.com</li>
             </ul>
           </div>
         </div>

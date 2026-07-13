@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -41,7 +41,7 @@ export default function App() {
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <Toaster
           position="top-right"
@@ -90,6 +90,6 @@ export default function App() {
           </Route>
         </Routes>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

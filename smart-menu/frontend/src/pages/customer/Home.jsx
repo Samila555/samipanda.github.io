@@ -206,7 +206,7 @@ function MesobDivider() {
       <div className="mx-3">
         <div className="w-9 h-9 rounded-full overflow-hidden border border-amber-500/50"
           style={{ boxShadow: '0 0 12px rgba(245,158,11,0.3)' }}>
-          <img src="/logo-icon.png" alt="" className="w-full h-full object-cover scale-110" />
+          <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="" className="w-full h-full object-cover scale-110" />
         </div>
       </div>
       <div className="h-px flex-1" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.35))' }} />
@@ -308,10 +308,7 @@ export default function Home() {
         {/* Particles */}
         <ParticlesCanvas />
 
-        {/* Golden rings decor */}
-        <div className="absolute top-20 right-20 w-64 h-64 rounded-full border border-amber-500/10 animate-spin" style={{ animationDuration: '20s' }} />
-        <div className="absolute top-20 right-20 w-40 h-40 rounded-full border border-amber-500/20 animate-spin" style={{ animationDuration: '12s', animationDirection: 'reverse', top: '6rem', right: '7rem' }} />
-        <div className="absolute bottom-20 left-20 w-80 h-80 rounded-full border border-amber-500/05 animate-spin" style={{ animationDuration: '30s' }} />
+
 
         {/* Glow blobs */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
@@ -344,7 +341,7 @@ export default function Home() {
                     style={{ boxShadow: '0 0 30px rgba(245,158,11,0.3)' }}
                     onMouseEnter={e => e.currentTarget.style.boxShadow = '0 0 60px rgba(245,158,11,0.6)'}
                     onMouseLeave={e => e.currentTarget.style.boxShadow = '0 0 30px rgba(245,158,11,0.3)'}>
-                    <img src="/logo-icon.png" alt="Smart Menu" className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700" />
+                    <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Smart Menu" className="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700" />
                   </div>
                 </div>
               </div>
@@ -371,7 +368,7 @@ export default function Home() {
               <div className="flex items-center justify-center gap-3 mb-5">
                 <div className="h-px w-10" style={{ background: 'linear-gradient(to right, transparent, #f59e0b)' }} />
                 <div className="w-7 h-7 rounded-full overflow-hidden border border-amber-500/50" style={{ boxShadow: '0 0 8px rgba(245,158,11,0.4)' }}>
-                  <img src="/logo-icon.png" alt="" className="w-full h-full object-cover scale-110" />
+                  <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="" className="w-full h-full object-cover scale-110" />
                 </div>
                 <div className="h-px w-10" style={{ background: 'linear-gradient(to left, transparent, #f59e0b)' }} />
               </div>

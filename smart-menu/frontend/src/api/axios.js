@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.PROD
+    ? 'https://smart-menu-api-ggtm.onrender.com/api'
+    : '/api',
 });
 
 API.interceptors.request.use((config) => {
