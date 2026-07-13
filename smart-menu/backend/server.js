@@ -23,8 +23,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 connectDB();
 
 // Ensure models sync with mysql database
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ alter: false }).then(() => {
   console.log('MySQL Database synced successfully.');
+}).catch((err) => {
+  console.error('DB sync warning (non-fatal):', err.message);
 });
 
 app.use('/api/auth', require('./routes/auth'));
