@@ -14,7 +14,7 @@ exports.getMeals = async (req, res) => {
       if (maxPrice) where.price[Op.lte] = Number(maxPrice);
     }
     if (available !== undefined) where.available = available === 'true';
-    
+
     const meals = await Meal.findAll({ where, include: [{ model: Category, as: 'Category', attributes: ['name'] }], order: [['createdAt', 'DESC']] });
     res.json(meals.map(m => { let v = m.toJSON(); v._id = v.id; return v; }));
   } catch (error) {
@@ -26,7 +26,7 @@ exports.getMeal = async (req, res) => {
   try {
     const meal = await Meal.findByPk(req.params.id, { include: [{ model: Category, as: 'Category', attributes: ['name'] }] });
     if (!meal) return res.status(404).json({ message: 'Meal not found' });
-    
+
     await meal.increment('popularity');
     let v = meal.toJSON(); v._id = v.id;
     res.json(v);
@@ -40,7 +40,7 @@ exports.createMeal = async (req, res) => {
     const { categoryId, name, description, ingredients, preparationMethod, calories, protein, carbohydrates, fat, price, available } = req.body;
     const category = await Category.findByPk(categoryId);
     if (!category) return res.status(404).json({ message: 'Category not found' });
-    
+
     const image = req.file ? `/uploads/${req.file.filename}` : '';
     const meal = await Meal.create({
       categoryId, name, image, description,
@@ -49,16 +49,16 @@ exports.createMeal = async (req, res) => {
       carbohydrates: Number(carbohydrates) || 0, fat: Number(fat) || 0,
       price: Number(price), available: available !== undefined ? available === 'true' || available === true : true,
     });
-    
-    const frontendUrl = process.env.FRONTEND_URL || `${req.protocol}://${req.get('host').replace(':5000', ':5173')}`;
+
+    const frontendUrl = process.env.FRONTEND_URL || 'https://samila555.github.io/samipanda.github.io/#';
     const mealUrl = `${frontendUrl}/menu?meal=${meal.id}`;
-    
+
     try {
       const qrImage = await QRCode.toDataURL(mealUrl, { width: 600, margin: 2, color: { dark: '#000000', light: '#FFFFFF' } });
       meal.qrCode = qrImage;
       await meal.save();
-    } catch (err) {}
-    
+    } catch (err) { }
+
     await meal.reload({ include: [{ model: Category, as: 'Category', attributes: ['name'] }] });
     let v = meal.toJSON(); v._id = v.id;
     res.status(201).json(v);
@@ -81,19 +81,19 @@ exports.updateMeal = async (req, res) => {
       updateData.ingredients = typeof req.body.ingredients === 'string' ? req.body.ingredients.split(',').map(i => i.trim()) : req.body.ingredients;
     }
     if (req.file) updateData.image = `/uploads/${req.file.filename}`;
-    
+
     const meal = await Meal.findByPk(req.params.id);
     if (!meal) return res.status(404).json({ message: 'Meal not found' });
     await meal.update(updateData);
-    
-    const frontendUrl = process.env.FRONTEND_URL || `${req.protocol}://${req.get('host').replace(':5000', ':5173')}`;
+
+    const frontendUrl = process.env.FRONTEND_URL || 'https://samila555.github.io/samipanda.github.io/#';
     const mealUrl = `${frontendUrl}/menu?meal=${meal.id}`;
     try {
       const qrImage = await QRCode.toDataURL(mealUrl, { width: 600, margin: 2, color: { dark: '#000000', light: '#FFFFFF' } });
       meal.qrCode = qrImage;
       await meal.save();
-    } catch (err) {}
-    
+    } catch (err) { }
+
     await meal.reload({ include: [{ model: Category, as: 'Category', attributes: ['name'] }] });
     let v = meal.toJSON(); v._id = v.id;
     res.json(v);
@@ -106,9 +106,9 @@ exports.getMealQR = async (req, res) => {
   try {
     const meal = await Meal.findByPk(req.params.id);
     if (!meal) return res.status(404).json({ message: 'Meal not found' });
-    if (meal.qrCode) return res.json({ qrCode: meal.qrCode, url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/menu?meal=${meal.id}` });
-    
-    const frontendUrl = process.env.FRONTEND_URL || `${req.protocol}://${req.get('host').replace(':5000', ':5173')}`;
+    if (meal.qrCode) return res.json({ qrCode: meal.qrCode, url: `${process.env.FRONTEND_URL || 'https://samila555.github.io/samipanda.github.io/#'}/menu?meal=${meal.id}` });
+
+    const frontendUrl = process.env.FRONTEND_URL || 'https://samila555.github.io/samipanda.github.io/#';
     const mealUrl = `${frontendUrl}/menu?meal=${meal.id}`;
     const qrImage = await QRCode.toDataURL(mealUrl, { width: 600, margin: 2, color: { dark: '#000000', light: '#FFFFFF' } });
     meal.qrCode = qrImage;

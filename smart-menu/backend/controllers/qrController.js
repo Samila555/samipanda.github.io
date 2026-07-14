@@ -23,7 +23,7 @@ exports.generateQR = async (req, res) => {
     }
 
     const baseUrl = `${req.protocol}://${hostIp}:5000`;
-    let frontendBase = process.env.FRONTEND_URL || baseUrl.replace(':5000', ':3000');
+    let frontendBase = process.env.FRONTEND_URL || 'https://samila555.github.io/samipanda.github.io/#';
 
     // Ensure frontendBase doesn't have a trailing slash
     if (frontendBase.endsWith('/')) frontendBase = frontendBase.slice(0, -1);
