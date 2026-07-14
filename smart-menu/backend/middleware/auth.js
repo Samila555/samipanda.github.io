@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'smart_menu_jwt_secret_key_2024_fallback';
+
 exports.protect = async (req, res, next) => {
   try {
     let token;
@@ -10,7 +12,7 @@ exports.protect = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({ message: 'Not authorized, no token' });
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.user = await User.findByPk(decoded.id);
     if (!req.user) {
       return res.status(401).json({ message: 'User not found' });

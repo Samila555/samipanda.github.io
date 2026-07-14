@@ -1,8 +1,11 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'smart_menu_jwt_secret_key_2024_fallback';
+const JWT_EXPIRE = process.env.JWT_EXPIRE || '30d';
+
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE || '30d' });
+  return jwt.sign({ id }, JWT_SECRET, { expiresIn: JWT_EXPIRE });
 };
 
 exports.register = async (req, res) => {
@@ -53,13 +56,13 @@ exports.login = async (req, res) => {
 exports.getMe = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id);
-    if(user) {
-        // Mock mongoose _id
-        const userObj = user.toJSON();
-        userObj._id = userObj.id;
-        res.json(userObj);
+    if (user) {
+      // Mock mongoose _id
+      const userObj = user.toJSON();
+      userObj._id = userObj.id;
+      res.json(userObj);
     } else {
-        res.status(404).json({ message: 'User not found' });
+      res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
