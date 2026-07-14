@@ -10,7 +10,6 @@ const Meal = sequelize.define('Meal', {
   description: { type: DataTypes.STRING, defaultValue: '' },
   ingredients: {
     type: DataTypes.JSON,
-    defaultValue: [],
     get() {
       const rawValue = this.getDataValue('ingredients');
       return rawValue ? (typeof rawValue === 'string' ? JSON.parse(rawValue) : rawValue) : [];
