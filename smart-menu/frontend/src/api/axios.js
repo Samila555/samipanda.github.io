@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({
   baseURL: import.meta.env.PROD
-    ? 'https://samipanda-github-io.onrender.com/api'
+    ? 'https://samipanda-github-io-1.onrender.com/api'
     : '/api',
 });
 

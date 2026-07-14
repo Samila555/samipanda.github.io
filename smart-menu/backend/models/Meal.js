@@ -8,8 +8,8 @@ const Meal = sequelize.define('Meal', {
   name: { type: DataTypes.STRING, allowNull: false },
   image: { type: DataTypes.STRING, defaultValue: '' },
   description: { type: DataTypes.STRING, defaultValue: '' },
-  ingredients: { 
-    type: DataTypes.JSON, 
+  ingredients: {
+    type: DataTypes.JSON,
     defaultValue: [],
     get() {
       const rawValue = this.getDataValue('ingredients');
@@ -24,7 +24,7 @@ const Meal = sequelize.define('Meal', {
   price: { type: DataTypes.FLOAT, allowNull: false },
   available: { type: DataTypes.BOOLEAN, defaultValue: true },
   popularity: { type: DataTypes.INTEGER, defaultValue: 0 },
-  qrCode: { type: DataTypes.TEXT('long'), defaultValue: '' },
+  qrCode: { type: DataTypes.TEXT('long'), allowNull: true },
 }, { timestamps: true });
 
 Category.hasMany(Meal, { foreignKey: 'categoryId' });
