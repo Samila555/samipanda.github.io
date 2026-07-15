@@ -180,3 +180,52 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom Google Translate Styling */
+.translate-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  background: white;
+  border-radius: 50px;
+  padding: 8px 16px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  overflow: hidden;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+.translate-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.4);
+}
+.translate-icon {
+  font-size: 1.25rem;
+  animation: pulse 2s infinite;
+}
+
+/* Hide the ugly Google Translate top bar & tooltips */
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+body { top: 0px !important; }
+#goog-gt-tt { display: none !important; }
+.goog-tooltip { display: none !important; }
+.goog-tooltip:hover { display: none !important; }
+
+/* Style the internal dropdown */
+.goog-te-combo {
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding-right: 4px;
+}
+.goog-logo-link { display: none !important; }
+.goog-te-gadget { color: transparent !important; }

@@ -12,7 +12,10 @@
 
 <body>
   <div id="root"></div>
-  <div id="google_translate_element" style="position:fixed; bottom:20px; left:20px; z-index:99999;"></div>
+  <div class="translate-wrapper">
+    <span class="translate-icon">🌍</span>
+    <div id="google_translate_element"></div>
+  </div>
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
