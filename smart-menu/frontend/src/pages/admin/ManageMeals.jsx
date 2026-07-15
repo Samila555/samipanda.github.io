@@ -161,8 +161,12 @@ export default function ManageMeals() {
                 <tr key={meal._id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                   <td className="p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-                        <Soup className="w-5 h-5 text-primary-500" />
+                      <div className="w-10 h-10 bg-primary-50 dark:bg-primary-900/20 rounded-lg flex items-center justify-center overflow-hidden">
+                        {meal.image ? (
+                          <img src={meal.image?.startsWith('/uploads') ? (import.meta.env.PROD ? `https://samipanda-github-io-1.onrender.com${meal.image}` : `http://localhost:5000${meal.image}`) : meal.image} alt={meal.name} className="w-full h-full object-cover" />
+                        ) : (
+                          <Soup className="w-5 h-5 text-primary-500" />
+                        )}
                       </div>
                       <span className="font-medium">{meal.name}</span>
                     </div>
@@ -170,9 +174,8 @@ export default function ManageMeals() {
                   <td className="p-4 text-gray-500">{meal.categoryId?.name || 'N/A'}</td>
                   <td className="p-4 text-right font-semibold">${meal.price}</td>
                   <td className="p-4 text-center">
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      meal.available ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
-                    }`}>
+                    <span className={`text-xs px-2 py-1 rounded-full ${meal.available ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                      }`}>
                       {meal.available ? 'Available' : 'Unavailable'}
                     </span>
                   </td>

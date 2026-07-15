@@ -158,7 +158,7 @@ export default function Menu() {
               <div id={`meal-${meal._id}`} key={meal._id} className={`card overflow-hidden group fade-in transition-all duration-500 ${selectedMeal === meal._id ? 'ring-4 ring-primary-500 shadow-xl shadow-primary-500/20 scale-[1.02]' : ''}`}>
                 <div className="h-48 flex items-center justify-center relative overflow-hidden bg-gray-100 dark:bg-gray-700">
                   {meal.image ? (
-                    <img src={meal.image} alt={meal.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={meal.image?.startsWith('/uploads') ? (import.meta.env.PROD ? `https://samipanda-github-io-1.onrender.com${meal.image}` : `http://localhost:5000${meal.image}`) : meal.image} alt={meal.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
                     <div className="bg-black/5 w-full h-full flex items-center justify-center overflow-hidden">
                       <img src={`${import.meta.env.BASE_URL}logo-icon.png`} alt="Placeholder" className="w-24 h-24 object-cover scale-110 opacity-20 group-hover:opacity-40 group-hover:scale-125 transition-all duration-500 rounded-full" />
