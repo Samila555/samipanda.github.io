@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, Soup, Search, Shield, CreditCard } from 'lucide-react';
+import LanguageToggle from './LanguageToggle';
 
 export default function Navbar({ darkMode, toggleDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,8 +42,8 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                 key={link.to}
                 to={link.to}
                 className={`font-medium transition-colors duration-200 ${location.pathname === link.to
-                    ? 'text-primary-500'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
+                  ? 'text-primary-500'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
                   }`}
               >
                 {link.label}
@@ -63,6 +64,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               <CreditCard className="w-4 h-4" />
               Cashier
             </Link>
+            <LanguageToggle />
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -72,6 +74,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
           </div>
 
           <div className="md:hidden flex items-center gap-2">
+            <LanguageToggle />
             <button onClick={toggleDarkMode} className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -91,8 +94,8 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
                 to={link.to}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-2 rounded-lg font-medium ${location.pathname === link.to
-                    ? 'bg-primary-50 text-primary-500 dark:bg-primary-900/20'
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                  ? 'bg-primary-50 text-primary-500 dark:bg-primary-900/20'
+                  : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
               >
                 {link.label}
