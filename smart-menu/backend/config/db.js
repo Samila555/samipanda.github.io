@@ -11,6 +11,12 @@ const sequelize = process.env.MYSQL_URL
       connectTimeout: 30000,
       ssl: false,
     },
+    pool: {
+      max: 10,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
   })
   : new Sequelize(
     process.env.MYSQL_DB || 'smart_menu',
@@ -22,6 +28,12 @@ const sequelize = process.env.MYSQL_URL
       dialect: 'mysql',
       logging: false,
       dialectOptions: { connectTimeout: 30000 },
+      pool: {
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+      }
     }
   );
 
