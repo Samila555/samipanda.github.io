@@ -210,11 +210,11 @@ export default function ManageMeals() {
             <div className="p-6 overflow-y-auto custom-scrollbar">
               <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4">
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">Name *</label>
+                  <label className="block text-sm font-medium mb-1">Name</label>
                   <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input-field" required />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">Category *</label>
+                  <label className="block text-sm font-medium mb-1">Category</label>
                   <select value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })} className="input-field" required>
                     <option value="">Select category</option>
                     {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
@@ -233,7 +233,7 @@ export default function ManageMeals() {
                   <textarea value={form.preparationMethod} onChange={(e) => setForm({ ...form, preparationMethod: e.target.value })} className="input-field" rows={1} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Price *</label>
+                  <label className="block text-sm font-medium mb-1">Price</label>
                   <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="input-field" min="0" step="0.01" required />
                 </div>
                 <div>

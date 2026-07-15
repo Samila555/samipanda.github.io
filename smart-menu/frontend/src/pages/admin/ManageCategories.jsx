@@ -115,7 +115,7 @@ export default function ManageCategories() {
             <h2 className="text-2xl font-bold mb-6">{editing ? 'Edit Category' : 'New Category'}</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Name *</label>
+                <label className="block text-sm font-medium mb-2">Name</label>
                 <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input-field" required />
               </div>
               <div>
