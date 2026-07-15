@@ -200,69 +200,75 @@ export default function ManageMeals() {
       )}
 
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto" onClick={() => setShowModal(false)}>
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 w-full max-w-2xl my-8 slide-up" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold">{editing ? 'Edit Meal' : 'New Meal'}</h2>
-              <button onClick={() => setShowModal(false)}><X className="w-6 h-6" /></button>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setShowModal(false)}>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col slide-up" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center p-6 border-b border-gray-100 dark:border-gray-700">
+              <h2 className="text-xl font-bold">{editing ? 'Edit Meal' : 'New Meal'}</h2>
+              <button onClick={() => setShowModal(false)}><X className="w-5 h-5" /></button>
             </div>
-            <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4">
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2">Name *</label>
-                <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input-field" required />
+
+            <div className="p-6 overflow-y-auto custom-scrollbar">
+              <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4">
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-1">Name *</label>
+                  <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input-field" required />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-1">Category *</label>
+                  <select value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })} className="input-field" required>
+                    <option value="">Select category</option>
+                    {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
+                  </select>
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-1">Description</label>
+                  <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="input-field" rows={1} />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-1">Ingredients (comma separated)</label>
+                  <input type="text" value={form.ingredients} onChange={(e) => setForm({ ...form, ingredients: e.target.value })} className="input-field" placeholder="Chicken, Lettuce, Tomato" />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-1">Preparation Method</label>
+                  <textarea value={form.preparationMethod} onChange={(e) => setForm({ ...form, preparationMethod: e.target.value })} className="input-field" rows={1} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Price *</label>
+                  <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="input-field" min="0" step="0.01" required />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Calories</label>
+                  <input type="number" value={form.calories} onChange={(e) => setForm({ ...form, calories: e.target.value })} className="input-field" min="0" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Protein (g)</label>
+                  <input type="number" value={form.protein} onChange={(e) => setForm({ ...form, protein: e.target.value })} className="input-field" min="0" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Carbs (g)</label>
+                  <input type="number" value={form.carbohydrates} onChange={(e) => setForm({ ...form, carbohydrates: e.target.value })} className="input-field" min="0" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Fat (g)</label>
+                  <input type="number" value={form.fat} onChange={(e) => setForm({ ...form, fat: e.target.value })} className="input-field" min="0" />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium mb-1">Image</label>
+                  <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} className="input-field" />
+                </div>
+                <div className="md:col-span-2 flex items-center gap-2 mt-2">
+                  <input type="checkbox" checked={form.available} onChange={(e) => setForm({ ...form, available: e.target.checked })} className="w-5 h-5 rounded" />
+                  <label className="text-sm font-medium">Available</label>
+                </div>
+              </form>
+            </div>
+
+            <div className="p-6 border-t border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50 rounded-b-2xl">
+              <div className="flex gap-3">
+                <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors font-medium">Cancel</button>
+                <button type="button" onClick={handleSubmit} className="flex-1 btn-primary py-2.5">{editing ? 'Update Meal' : 'Create Meal'}</button>
               </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2">Category *</label>
-                <select value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })} className="input-field" required>
-                  <option value="">Select category</option>
-                  {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
-                </select>
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2">Description</label>
-                <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="input-field" rows={2} />
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2">Ingredients (comma separated)</label>
-                <input type="text" value={form.ingredients} onChange={(e) => setForm({ ...form, ingredients: e.target.value })} className="input-field" placeholder="Chicken, Lettuce, Tomato" />
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2">Preparation Method</label>
-                <textarea value={form.preparationMethod} onChange={(e) => setForm({ ...form, preparationMethod: e.target.value })} className="input-field" rows={2} />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Price *</label>
-                <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="input-field" min="0" step="0.01" required />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Calories</label>
-                <input type="number" value={form.calories} onChange={(e) => setForm({ ...form, calories: e.target.value })} className="input-field" min="0" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Protein (g)</label>
-                <input type="number" value={form.protein} onChange={(e) => setForm({ ...form, protein: e.target.value })} className="input-field" min="0" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Carbs (g)</label>
-                <input type="number" value={form.carbohydrates} onChange={(e) => setForm({ ...form, carbohydrates: e.target.value })} className="input-field" min="0" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Fat (g)</label>
-                <input type="number" value={form.fat} onChange={(e) => setForm({ ...form, fat: e.target.value })} className="input-field" min="0" />
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-2">Image</label>
-                <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} className="input-field" />
-              </div>
-              <div className="md:col-span-2 flex items-center gap-2">
-                <input type="checkbox" checked={form.available} onChange={(e) => setForm({ ...form, available: e.target.checked })} className="w-5 h-5 rounded" />
-                <label className="text-sm font-medium">Available</label>
-              </div>
-              <div className="md:col-span-2 flex gap-3 pt-2">
-                <button type="button" onClick={() => setShowModal(false)} className="flex-1 py-2 border border-gray-300 dark:border-gray-600 rounded-lg">Cancel</button>
-                <button type="submit" className="flex-1 btn-primary">{editing ? 'Update Meal' : 'Create Meal'}</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       )}
