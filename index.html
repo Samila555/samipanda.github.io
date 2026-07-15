@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <title>Smart Menu</title>
-  <script type="module" crossorigin src="/samipanda.github.io/assets/index-DJTWAmB9.js"></script>
-  <link rel="stylesheet" crossorigin href="/samipanda.github.io/assets/index-BkjSsWWp.css">
+  <script type="module" crossorigin src="/samipanda.github.io/assets/index-B71i3nLo.js"></script>
+  <link rel="stylesheet" crossorigin href="/samipanda.github.io/assets/index-CZHEcAin.css">
 </head>
 
 <body>
@@ -24,6 +24,30 @@
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
+
+    // Aggressively remove all injected Google Translate UI junk
+    function removeGoogleTranslateJunk() {
+      // Remove the floating Google bubble / speech button
+      document.querySelectorAll('div.skiptranslate, iframe.skiptranslate').forEach(el => {
+        if (!el.id || el.id !== 'google_translate_element') {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+        }
+      });
+      // Force body top to 0 (Google sets it to 40px)
+      document.body.style.top = '0px';
+      document.body.style.position = 'static';
+    }
+
+    // Run immediately and watch for future injections
+    const observer = new MutationObserver(removeGoogleTranslateJunk);
+    document.addEventListener('DOMContentLoaded', () => {
+      removeGoogleTranslateJunk();
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+    setTimeout(removeGoogleTranslateJunk, 500);
+    setTimeout(removeGoogleTranslateJunk, 1500);
+    setTimeout(removeGoogleTranslateJunk, 3000);
   </script>
   <script type="text/javascript"
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
