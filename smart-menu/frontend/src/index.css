@@ -6,6 +6,7 @@
   body {
     @apply bg-gray-50 text-gray-900 transition-colors duration-300;
   }
+
   .dark body,
   body.dark {
     @apply bg-gray-900 text-gray-100;
@@ -16,163 +17,289 @@
   .btn-primary {
     @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
   }
+
   .btn-secondary {
     @apply bg-secondary-500 hover:bg-secondary-600 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200;
   }
+
   .btn-outline {
     @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200;
   }
+
   .card {
     @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300;
   }
+
   .dark .card {
     @apply bg-gray-800 shadow-gray-700/30;
   }
+
   .input-field {
     @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all duration-200 bg-white;
   }
+
   .dark .input-field {
     @apply bg-gray-700 border-gray-600 text-white;
   }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .fade-in {
   animation: fadeIn 0.5s ease-in;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .slide-up {
   animation: slideUp 0.3s ease-out;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33% { transform: translateY(-15px) rotate(5deg); }
-  66% { transform: translateY(-8px) rotate(-3deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+
+  66% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
 }
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
 .animate-float-delayed {
   animation: float 7s ease-in-out 1s infinite;
 }
+
 .animate-float-slow {
   animation: float 9s ease-in-out 2s infinite;
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
+  }
 }
+
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes scroll-reveal {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
+
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes bounce-gentle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .card-3d {
   perspective: 1000px;
 }
+
 .card-3d-inner {
   transition: transform 0.3s ease-out;
   transform-style: preserve-3d;
 }
 
 @keyframes ripple {
-  to { transform: scale(4); opacity: 0; }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
+
 .ripple-btn {
   overflow: hidden;
 }
+
 .ripple-btn span.ripple-effect {
   position: absolute;
   border-radius: 50%;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
   transform: scale(0);
   animation: ripple 0.6s linear;
   pointer-events: none;
 }
 
 @keyframes float-around {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  25% { transform: translate(30px, -20px) rotate(90deg) scale(1.1); }
-  50% { transform: translate(-10px, -40px) rotate(180deg) scale(0.9); }
-  75% { transform: translate(-30px, -10px) rotate(270deg) scale(1.05); }
-  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translate(30px, -20px) rotate(90deg) scale(1.1);
+  }
+
+  50% {
+    transform: translate(-10px, -40px) rotate(180deg) scale(0.9);
+  }
+
+  75% {
+    transform: translate(-30px, -10px) rotate(270deg) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(1);
+  }
 }
 
 @keyframes progress-fill {
-  from { stroke-dashoffset: 283; }
-  to { stroke-dashoffset: var(--progress); }
+  from {
+    stroke-dashoffset: 283;
+  }
+
+  to {
+    stroke-dashoffset: var(--progress);
+  }
 }
 
 @keyframes blob {
-  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
 }
+
 .animate-blob {
   animation: blob 8s ease-in-out infinite;
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
+
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
 @keyframes scale-in {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
+
 .scale-in {
   animation: scale-in 0.4s ease-out;
 }
@@ -181,51 +308,42 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom Google Translate Styling */
-.translate-wrapper {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 99999;
-  background: white;
-  border-radius: 50px;
-  padding: 8px 16px;
-  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  overflow: hidden;
-  height: 48px;
-  transition: all 0.3s ease;
-}
-.translate-wrapper:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.4);
-}
-.translate-icon {
-  font-size: 1.25rem;
-  animation: pulse 2s infinite;
+/* ===== HIDE ALL GOOGLE TRANSLATE UI CHROME ===== */
+/* Hide the floating top bar Google adds when translating */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
 }
 
-/* Hide the ugly Google Translate top bar & tooltips */
-.goog-te-banner-frame.skiptranslate { display: none !important; }
-body { top: 0px !important; }
-#goog-gt-tt { display: none !important; }
-.goog-tooltip { display: none !important; }
-.goog-tooltip:hover { display: none !important; }
-
-/* Style the internal dropdown */
-.goog-te-combo {
-  border: none;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  color: #1f2937;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  padding-right: 4px;
+/* Prevent Google from pushing body down */
+body {
+  top: 0 !important;
+  position: static !important;
 }
-.goog-logo-link { display: none !important; }
-.goog-te-gadget { color: transparent !important; }
+
+/* Hide tooltips */
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+/* Hide the widget itself (we control it via cookies) */
+.goog-te-gadget,
+.goog-te-combo,
+.goog-logo-link,
+#google_translate_element {
+  display: none !important;
+}
+
+/* Hide any Google Translate injected elements */
+.skiptranslate {
+  display: none !important;
+}
+
+font[face] {
+  display: inherit !important;
+}
